@@ -1,0 +1,14 @@
+-- Телепорт к курсору при нажатии Control и ЛКМ
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+
+local function teleportToCursor()
+    if UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+        local targetPosition = Mouse.Hit.p
+        LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(targetPosition)
+    end
+end
+
+Mouse.Button1Down:Connect(teleportToCursor)
